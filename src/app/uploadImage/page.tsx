@@ -8,7 +8,6 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
-import { BarLoader } from "react-spinners";
 
 const UploadImage = () => {
   const [imageUpload, setImageUpload] = useState<File | null>(null);
@@ -53,15 +52,15 @@ const UploadImage = () => {
     <div className="flex justify-center items-center h-screen w-full flex-col">
       <div className="grid w-full max-w-sm items-center border p-4 m-4 gap-4">
         <h1 className="text-2xl font-bold">Image Upload</h1>
-        <Label htmlFor="picture">Imagem</Label>
+        <Label htmlFor="picture">Image</Label>
         <Input id="picture" type="file" onChange={(event: ChangeEvent<HTMLInputElement>) => {
           setImageUpload(event.target.files![0]);
         }} />
-        <Button onClick={uploadFile} variant="outline">Button</Button>
+        <Button onClick={uploadFile} variant="outline">Send</Button>
       </div>
-      <div>
+      <div className="flex flex-wrap gap-6 w-xl justify-center">
         {imageUrls.length === 0 ? (
-          <BarLoader />
+          ""
         ) : (
           imageUrls.map((url) => (
             <div key={v4()}>
